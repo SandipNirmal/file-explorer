@@ -1,16 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 
 import { File as FileType } from "@/types/types";
 import { FileIconMapping } from "@/data/data";
 import { ExplorerContext } from "./ExplorerContext";
 
 export default function File({ name, meta = "file" }: FileType) {
-  const {setClicked, setPoints, setSelectedFile} = useContext(ExplorerContext)
-  const [selected, setSelected] = useState(false);
-
-  function toggle(): void {
-    setSelected(v => !v);
-  }
+  const {setClicked, setPoints, setSelectedFile, selectedFile} = useContext(ExplorerContext)
 
   function handleContextMenuClick(e: React.MouseEvent) {
     e.preventDefault();
@@ -22,10 +17,17 @@ export default function File({ name, meta = "file" }: FileType) {
     setSelectedFile(name);
   }
 
+  function handleClick() {
+    setSelectedFile(name);
+  }
+
+  // use unique id instead of name
+  const selected = selectedFile === name;
+
   return (
     <div
       className={`file ${selected ? 'selected' :''}`}
-      onClick={toggle}
+      onClick={handleClick}
       onContextMenu={handleContextMenuClick}
     >
         <img src={FileIconMapping[meta]} />
