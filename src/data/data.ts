@@ -64,3 +64,12 @@ export const Files = {
     },
   ],
 };
+
+export const FileIconMapping: Record<string, string> = {
+  js: '/assets/javascript.svg',
+  ts: '/assets/typescript.svg',
+  html: '/assets/html.svg',
+  img: '/assets/image.svg',
+  svg: '/assets/image.svg',
+  file: '/assets/file.svg'
+}

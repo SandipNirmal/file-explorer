@@ -1,7 +1,16 @@
 import { useState } from "react";
-import { File, FileTypes } from "../types/types";
 
-export default function Directory({ type, name, data = [] }: File) {
+import folderIcon from "/assets/folder.svg";
+import folderOpenIcon from "/assets/folder_open.svg";
+import { File, FileTypes } from "@/types/types";
+import FileComp from "./File";
+
+export default function Directory({
+  type,
+  name,
+  data = [],
+  meta = "file",
+}: File) {
   const [isOpen, setOpen] = useState(false);
 
   function toggle() {
@@ -12,11 +21,14 @@ export default function Directory({ type, name, data = [] }: File) {
 
   if (isDirectory) {
     return (
-      <div>
-        <h5 onClick={toggle}>{name}</h5>
+      <div className="directory">
+        <div className="file" onClick={toggle}>
+          <img src={isOpen ? folderOpenIcon : folderIcon} />
+          <h5>{name}</h5>
+        </div>
         {isOpen ? (
           <ul>
-            {data.map((item) => (
+            {data.map((item: File) => (
               <Directory {...item} key={item.name} />
             ))}
           </ul>
@@ -25,9 +37,5 @@ export default function Directory({ type, name, data = [] }: File) {
     );
   }
 
-  return (
-    <div>
-      <h5>{name}</h5>
-    </div>
-  );
+  return <FileComp name={name} meta={meta} />;
 }
