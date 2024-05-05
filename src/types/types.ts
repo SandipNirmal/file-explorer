@@ -9,3 +9,16 @@ export interface File {
   data?: File[],
   meta?: string
 }
+
+type Point = {
+  x: number, y: number
+}
+
+export interface ExplorerContextType {
+  selectedFile: string,
+  setSelectedFile: (file: string) => void
+  clicked: boolean,
+  setClicked: (v: boolean) => void,
+  points: Point,
+  setPoints: (v: Point) => void,
+}

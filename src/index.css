@@ -31,7 +31,10 @@ body {
   margin: 1rem auto;
   width: 90vw;
   max-width: 1280px;
+  position: relative;
 }
+
+.explorer {}
 
 .directory ul {
     padding-left: 1rem ;
@@ -44,10 +47,41 @@ body {
     cursor: pointer;
 }
 
-/* .file.selected {
-    background: red
-} */
+.file.selected {
+    background: rgba(0, 0, 0, 0.05)
+}
 
 .file h6 {
     padding-left: 0.25rem;
+}
+
+.contextMenu {
+    position: absolute;
+    border: 1px solid #e1e1e1;
+    z-index: 1;
+    background: #f6f6f6;
+    box-shadow: 0 0 1px #e1e1e1;
+    text-align: center;
+    padding: 4px 0 0 0;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.actions button {
+    display: block;
+    border: 0;
+    padding: 4px 0;
+    background: transparent;
+    font-weight: 600;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    text-align: left;
+}
+
+.actions button:hover {
+   background: rgba(0, 0, 0, 0.2);
 }

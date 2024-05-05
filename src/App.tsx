@@ -1,4 +1,4 @@
-import Directory from './components/Directory'
+import Explorer from './components/Explorer'
 import { Files } from './data/data'
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <>
       <div>
       <h1>File Explorer</h1>
-      <Directory {...Files} />
+      <Explorer {...Files} />
       </div>
     </>
   )
